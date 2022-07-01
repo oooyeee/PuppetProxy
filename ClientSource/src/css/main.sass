@@ -1,0 +1,255 @@
+@use "./reset.css"
+@use "./_triggers.sass" as triggers
+
+//==================== VARS
+$minwidth: 960px
+
+//==================== mixins
+@mixin flex-ccc
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+@mixin flex-rcc
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+
+body
+    font-family: Verdana, sans-serif
+    color: white
+    background-color: #222
+
+.flex-cc
+    +flex-ccc
+
+.brd
+    box-sizing: border-box
+    border: 1px solid white
+
+.cont-960
+    width: 100%
+    max-width: 960px
+
+.warning_small_screen
+    position: fixed
+    width: 100%
+    height: 100%
+
+.ss_hide
+    @media (max-width: $minwidth - 1px)
+        display: none
+.ss_show
+    @media (min-width: $minwidth)
+        display: none
+
+header
+    height: 56px
+    width: 100%
+    text-shadow: 1px 1px 1px black
+    box-shadow: 0px 1px 1px #11111180
+
+.header-wrapper
+    +flex-rcc
+    width: 100%
+    height: 100%
+    gap: 12px
+
+.header__logo
+    display: block
+    position: relative
+    width: max-content
+    height: 48px
+    cursor: pointer
+    & > label
+        position: relative
+        +flex-rcc
+        gap: 8px
+        height: 100%
+        width: 100%
+        & > img
+            height: auto
+            width: 32px
+            box-sizing: border-box
+            border: 2px solid cyan
+        & > span
+            font-size: 1.25em
+
+.header__button
+    display: block
+    cursor: pointer
+    position: relative
+    box-sizing: border-box
+    border: 2px solid cyan
+    min-width: 100px
+    min-height: 32px
+    line-height: 32px
+    text-align: center
+
+    &:nth-of-type(1)
+        margin-left: auto
+
+.header__status_bar
+    display: block
+    position: relative
+    margin-left: 40px
+    width: max-content
+    &:before
+        display: block
+        position: absolute
+        content: ""
+        width: 12px
+        left: -20px
+        height: 20px
+        background-color: green
+    &:after
+        display: block
+        position: absolute
+        content: ""
+        width: 100%
+        height: 1px
+        background-color: green
+
+.main-wrapper
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 100%
+    height: 100%
+    gap: 12px
+    & > h1
+        height: 40px
+        font-size: 20px
+        line-height: 40px
+        margin-top: 10px
+
+.streamimg-cont
+    +flex-ccc
+    width: 100%
+    height: 100%
+    &__img
+        display: block
+        width: 904px
+        height: 604px
+        box-sizing: border-box
+        border: 2px solid cyan
+
+.form--interactions
+    +flex-rcc
+    gap: 16px
+    height: 40px
+    margin: 0px
+    &__text
+        display: block
+    &__text::placeholder
+        color: gray
+    &__submit
+        height: 32px
+        width: 100px
+        border: 2px solid cyan
+        text-align: center
+        cursor: pointer
+
+.modal
+    position: fixed
+    top: 0px
+    left: 0px
+    width: 100%
+    height: 100%
+    +flex-ccc
+
+.form--login
+    position: relative
+    width: 500px
+    height: 500px
+    background-color: #33448880
+    display: flex
+    flex-direction: column
+    border-radius: 20px
+
+.form--register
+    position: relative
+    width: 500px
+    height: 500px
+    background-color: #33448880
+    display: flex
+    flex-direction: column
+    border-radius: 20px
+
+.modal--register, .modal--login
+    display: none
+
+.form__heading
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    width: 500px
+    height: 96px
+    border-bottom: 2px solid white
+    margin-bottom: 24px
+    padding: 24px
+
+    & > span
+        height: 40px
+        line-height: 40px
+        text-align: center
+        // border: 1px solid white
+        font-weight: 700
+        font-size: 24px
+
+    & > label
+        border-radius: 50%
+        text-align: center
+        width: 40px
+        height: 40px
+        line-height: 36px
+        border: 1px solid white
+        font-size: 24px
+        cursor: pointer
+
+.form__hint
+    display: block
+    position: relative
+    height: 20px
+    line-height: 20px
+    text-align: center
+    font-size: 14px
+    color: gray
+    &:before
+        position: absolute
+        content: "last uuid: "
+        left: 24px
+
+.form__inputs
+    +flex-ccc
+    width: 500px
+    gap: 12px
+    padding: 24px
+    & > input
+        padding-left: 24px
+        width: 100%
+        height: 64px
+        border: 1px solid white
+        &::placeholder
+            color: gray
+    & > input[type=submit]
+        padding-left: unset
+        color: yellow
+        text-align: center
+        cursor: pointer
+
+.form__alt
+    +flex-ccc
+    padding: 24px
+
+.escape-modal-login, .escape-modal-register
+    background-color: rgba(black, 0.33)
+    position: absolute
+    width: 100%
+    height: 100%
+    cursor: crosshair
+
++triggers.modals

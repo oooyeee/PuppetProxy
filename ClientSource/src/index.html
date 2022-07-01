@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.sass">
+    <style>
+        .displaynone {
+            display: none;
+        }
+    </style>
+    <script type="module" src="./js/main.js"></script>
+</head>
+
+<body>
+    <input type="checkbox" name="checkbox-modal-login" id="checkbox-modal-login" class="displaynone">
+    <input type="checkbox" name="checkbox-modal-register" id="checkbox-modal-register" class="displaynone">
+    <header class="flex-cc ss_hide">
+        <div class="cont-960 header-wrapper">
+            <a class="header__logo" href="/">
+                <label>
+                    <img src="./favicon-48x48.png" alt="Yaro logo" srcset="">
+                    <span>yaro.pt</span>
+                </label>
+            </a>
+            <span class="header__status_bar" id="status-bar">status message</span>
+            <label for="checkbox-modal-login" class="header__button">
+                <span>Login</span>
+            </label>
+            <label for="checkbox-modal-register" class="header__button">
+                <span>Register</span>
+            </label>
+        </div>
+    </header>
+    <main class="flex-cc ss_hide">
+        <div class="cont-960 main-wrapper">
+            <h1>hello friend</h1>
+            <form action="/interactions" method="post" class="form--interactions">
+                <select id="form--interactions__options">
+                    <option value="send keys">Send keys</option>
+                    <option value="goto url">Goto URL</option>
+                    <option value="save screenshot">Save screenshot</option>
+                </select>
+                <input type="text" name="keyboard_input" class="form__text" placeholder="write here">
+                <input type="submit" value="submit" class="form__submit">
+            </form>
+            <div class="streamimg-cont">
+                <img class="streamimg-cont__img" id="stream-window" src="" alt="no data">
+            </div>
+        </div>
+    </main>
+    <div class="warning_small_screen ss_show">
+        <h1>warning</h1>
+        <h2>please use this app on full hd screen</h2>
+    </div>
+    <footer class="flex-cc">
+        <div class="cont-960"></div>
+    </footer>
+    <div class="modal modal--login">
+        <label for="checkbox-modal-login" class="escape-modal-login"></label>
+        <form action="/auth?login" method="post" class="form--login">
+            <div class="form__heading">
+                <span>Login</span>
+                <label for="checkbox-modal-login">x</label>
+            </div>
+            <div class="form__hint" id="form__hint">asdasdasd-zxcxzc-123123-asdasd</div>
+            <div class="form__inputs">
+                <input type="text" name="uuid" placeholder="paste your uuid">
+                <input type="password" name="password" placeholder="your password">
+                <input type="hidden" name="login" value="true">
+                <input type="submit" value="Login">
+            </div>
+            <div class="form__alt">
+                <a href="#register" onclick="((e)=>{e.preventDefault();})(e)">Dont have a login? Register instead</a>
+            </div>
+        </form>
+    </div>
+    <div class="modal modal--register">
+        <label for="checkbox-modal-register" class="escape-modal-register"></label>
+        <form action="/auth?register" method="post" class="form--register">
+            <div class="form__heading">
+                <span>Register</span>
+                <label for="checkbox-modal-register">x</label>
+            </div>
+            <div class="form__inputs">
+                <input type="text" name="name" placeholder="your name">
+                <input type="password" name="password" placeholder="your password">
+                <input type="submit" value="Register">
+            </div>
+            <div class="form__alt">
+                <a href="#login">already have a login? Login instead</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
